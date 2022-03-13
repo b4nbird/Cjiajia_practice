@@ -1,46 +1,29 @@
-#include <bits/stdc++.h>
+#include<string>
+#include<cstring>
+#include<iostream>
+#include<cstdio>
 using namespace std;
-
-int proportion(int a[],int l,int r){
-	int i = l,j = r,x = a[l];
-	while(i<j){
-		while(i<j&&a[j]>=x){
-			j--;
-		}
-		if(i<j){
-			a[i++] = a[j];
-		}
-		while(i<j&&a[i]<=x){
-			i++;
-		}
-		if(i<j){
-			a[j--] = a[i];
-		}
-	}
-	a[i] = x;
-	return i;
-}
-
-void quicksort(int a[],int l,int r){
-	if(l>=r){
+string pre,mid;
+void res(string pre,string mid)
+{
+    if(pre.empty()){
 		return;
-	}
-	int i = proportion(a,l,r);
-	quicksort(a,l,i-1);
-	quicksort(a,i+1,r);
+    }
+    char root=pre[0];
+    int k=mid.find(root);
+    pre.erase(pre.begin());
+    string preleft=pre.substr(0,k);
+    string preright=pre.substr(k);
+    string midleft=mid.substr(0,k);
+    string midright=mid.substr(k+1);
+    res(preleft,midleft);
+    res(preright,midright);
+    printf("%c",root);
 }
-
-int main(){
-	int n;
-	cin >> n;
-	int len = n;
-	int a[len];
-	for(int i=0;i<len;i++){
-		cin >> a[i];
-	}
-	quicksort(a,0,len-1);
-	for(int i=0;i<len;i++){
-		cout << a[i] << " ";
-	}
-	return 0;
+int main()
+{
+    cin>>mid>>pre;
+    res(pre,mid);
+    putchar('\n');
+    return 0;
 }

@@ -7,7 +7,7 @@ int a[nmax];//存储数值序列
 int dp[nmax];//dp[i]记录必须以a[i]为结尾的LIS的长度 
  
 int main() {
-	int n;
+	int n; 
 	cin >> n; 
 	for(int i=0;i<n;i++){
 		cin>>a[i];
