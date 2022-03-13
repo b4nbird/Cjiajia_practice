@@ -11,10 +11,10 @@ int qsort(int l,int r){
 		}
 		while(a[j]>mid){
 			j--;
-		}
+		}//产生a[i]>mid,a[j]<mid的数，应当交换 
 		if(i<=j){
 			swap(a[i],a[j]);
-			i++;
+			i++;//处理完两边开始下一个目标 
 			j--;
 		} 
 	}while(i<=j);

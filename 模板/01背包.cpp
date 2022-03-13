@@ -11,7 +11,7 @@ int main(){
 	输入背包容量c和物品总数n 
 	每个物品对应的重量和价值 
 	*/
-	cin >> c >> n;
+	cin >> n >> c;
 	for(int i=1;i<=n;i++){
 		cin >> w[i] >> v[i];
 	}

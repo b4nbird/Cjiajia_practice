@@ -1,27 +1,33 @@
-#include <iostream>
-#include<cstring>
+#include <bits/stdc++.h>
 using namespace std;
- 
-const int nmax=1000+5;
-int a[nmax];//存储数值序列
-int dp[nmax];//dp[i]记录必须以a[i]为结尾的LIS的长度 
- 
-int main() {
-	int n;
-	cin >> n; 
-	for(int i=0;i<n;i++){
-		cin>>a[i];
-		dp[i]=1;
-	}
-	int ans=1;//ans记录整个序列的LIS长度，初值为1 
-	for(int i=1;i<n;i++){
-		for(int j=0;j<i;j++){
-			if(a[j]<a[i]){
-				dp[i]=max(dp[j]+1,dp[i]);
+
+void shellsort(int a[],int n){
+	for(int ad=n/2;ad>0;ad/=2){
+		for(int i=0;i<ad;i++){
+			for(int j=i+ad;j<n;j+=ad){
+				if(a[j-ad]>a[j]){
+					int temp = a[j];
+					int k = j-ad;
+					while(k>0&&a[k]>temp){
+						a[k+ad] = a[j];
+						k -= ad;
+					}
+					a[k] = temp; 
+				}
 			}
-			ans=max(ans,dp[i]);
 		}
 	}
-	cout<<ans<<endl;
-	return 0;
+}
+
+int main(){
+	int n;
+	cin >> n;
+	int a[n];
+	for(int i=0;i<n;i++){
+		cin >> a[i]; 
+	}
+	shellsort(a,n);
+	for(int i=0;i<n;i++){
+		cout << a[i] << " ";
+	}
 }
