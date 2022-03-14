@@ -1,29 +1,39 @@
-#include<string>
-#include<cstring>
-#include<iostream>
-#include<cstdio>
+#include <bits/stdc++.h>
 using namespace std;
-string pre,mid;
-void res(string pre,string mid)
-{
-    if(pre.empty()){
-		return;
-    }
-    char root=pre[0];
-    int k=mid.find(root);
-    pre.erase(pre.begin());
-    string preleft=pre.substr(0,k);
-    string preright=pre.substr(k);
-    string midleft=mid.substr(0,k);
-    string midright=mid.substr(k+1);
-    res(preleft,midleft);
-    res(preright,midright);
-    printf("%c",root);
-}
-int main()
-{
-    cin>>mid>>pre;
-    res(pre,mid);
-    putchar('\n');
-    return 0;
+
+const int v = 9999;
+int a[100][100];
+int m,n;
+
+int main(){
+	cin >> n >> m;
+	for(int i=1;i<=n;i++){
+		for(int j=1;j<=n;j++){
+			if(i==j){
+				continue;
+			} else {
+				a[i][j] = v;
+			}
+		}
+	}
+	int t1,t2,t3;
+	for(int i=1;i<=n;i++){
+		cin >> t1 >> t2 >> t3;
+		a[t1][t2] = t3;
+	}
+	for(int k=1;k<=n;k++){
+		for(int i=1;i<=n;i++){
+			for(int j=1;j<=n;j++){
+				if(a[i][j]>a[i][k]+a[k][j]){
+					a[i][j] = a[i][k] + a[k][j];
+				} 
+			}
+		}
+	} 
+	for(int i=1;i<=n;i++){
+		for(int j=1;j<=n;j++){
+			cout << a[i][j] << " ";
+		}
+		cout << endl;
+	}
 }

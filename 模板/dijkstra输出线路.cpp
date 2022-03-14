@@ -4,7 +4,7 @@
 
 using namespace std;
 
-typedef struct AMGraph {							//定义图
+struct AMGraph {							//定义图
 	int vex, arc;
 	int arcs[Max][Max];								//邻接矩阵
 };

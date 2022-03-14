@@ -1,5 +1,4 @@
-#include<iostream>
-#include<algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 const int N = 200001;
 int father[N];

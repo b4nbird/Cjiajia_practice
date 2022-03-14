@@ -23,12 +23,12 @@ int main()
 	f[0]=0;
 	for(int i=1;i<=n;i++)
 	{
-		int l=0,r=len;
+		int l=0,r=len,mid;
 		if(map[b[i]]>f[len]){
 			f[++len] = map[b[i]];
 		} else {		
 			while(l<r){
-				int mid=(l + r) / 2;
+				mid=(l + r) / 2;
 		    	if(f[mid]>map[b[i]]){
 					r = mid;
 		    	} else {
