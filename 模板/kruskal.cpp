@@ -3,14 +3,17 @@ using namespace std;
 const int N = 200001;
 int father[N];
 int n, m;
+
 struct Node
 {
     int value, a, b;
 }e[N];
+
 bool cmp(const Node& a, const Node& b)
 {
     return a.value < b.value;
 }
+
 int find_(int x)        //并查集查找 
 {
     int root = x;
@@ -37,7 +40,7 @@ void kruskal()
             t++;
             if(t == n)
             {
-                printf("%d\n", costlenth);
+                cout << costlenth << endl;
                 return;
             }
         }
@@ -45,9 +48,10 @@ void kruskal()
 }
 int main()
 {
-    scanf("%d%d", &n, &m);
-    for(int i = 1; i <= m; i++)
-        scanf("%d%d%d", &e[i].a, &e[i].b, &e[i].value);
+    cin >> n >> m;
+    for(int i = 1; i <= m; i++){
+		cin >> e[i].a >> e[i].b >> e[i].value;
+    }
     sort(e+1, e+m+1, cmp);            //将权值从小到大排序 
     kruskal();
     return 0;

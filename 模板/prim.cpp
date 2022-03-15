@@ -1,8 +1,4 @@
-#include<cstdio>
-#include<queue>
-#include<cstring>
-#include<algorithm>
-#define R register int
+#include <bits/stdc++.h> 
 using namespace std;
 
 int k,n,m,cnt,sum,ai,bi,ci,head[5005],dis[5005],vis[5005];
@@ -35,7 +31,7 @@ void prim()
         cnt++;
         sum+=d;
         vis[u]=1;
-        for(R i=head[u];i!=-1;i=e[i].next)
+        for(int i=head[u];i!=-1;i=e[i].next)
             if(e[i].w<dis[e[i].v])
                 dis[e[i].v]=e[i].w,q.push(make_pair(dis[e[i].v],e[i].v));
     }
@@ -45,14 +41,13 @@ int main()
 {
     memset(dis,127,sizeof(dis));
     memset(head,-1,sizeof(head));
-    scanf("%d%d",&n,&m);
-    for(R i=1;i<=m;i++)
+    cin >> n >> m;
+    for(int i=1;i<=m;i++)
     {
-        scanf("%d%d%d",&ai,&bi,&ci);
+        cin >> ai >> bi >> ci;
         add(ai,bi,ci);
         add(bi,ai,ci);
     }
     prim();
-    if (cnt==n)printf("%d",sum);
-    else printf("orz");
+    cout << sum;
 }
